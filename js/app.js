@@ -21,14 +21,15 @@
   let currentSort = 'az'; // 'az' | 'users'
 
   // ---- DOM refs ----
-  const categoriesRoot  = document.getElementById('categories-root');
-  const noResultsEl     = document.getElementById('no-results');
-  const noResultsQuery  = document.getElementById('no-results-query');
-  const clearSearchBtn  = document.getElementById('clear-search-btn');
-  const backToTopBtn    = document.getElementById('back-to-top');
-  const stlSearchForm   = document.getElementById('stl-search-form');
-  const stlSearchInput  = document.getElementById('stl-search-input');
-  const stlResults      = document.getElementById('stl-results');
+  const categoriesRoot     = document.getElementById('categories-root');
+  const noResultsEl        = document.getElementById('no-results');
+  const noResultsQuery     = document.getElementById('no-results-query');
+  const clearSearchBtn     = document.getElementById('clear-search-btn');
+  const backToTopBtn       = document.getElementById('back-to-top');
+  const stlSearchForm      = document.getElementById('stl-search-form');
+  const stlSearchInput     = document.getElementById('stl-search-input');
+  const stlResults         = document.getElementById('stl-results');
+  const headerResultsPanel = document.getElementById('header-results-panel');
 
   // ===================================================
   // INIT
@@ -184,6 +185,12 @@
   // ===================================================
   // STL SEARCH
   // ===================================================
+  function closeResultsPanel() {
+    stlResults.hidden = true;
+    stlResults.innerHTML = '';
+    headerResultsPanel.hidden = true;
+  }
+
   function setupStlSearch() {
     stlSearchForm.addEventListener('submit', e => {
       e.preventDefault();
@@ -193,9 +200,19 @@
     });
 
     stlSearchInput.addEventListener('input', () => {
-      if (!stlSearchInput.value.trim()) {
-        stlResults.hidden = true;
-        stlResults.innerHTML = '';
+      if (!stlSearchInput.value.trim()) closeResultsPanel();
+    });
+
+    if (clearSearchBtn) {
+      clearSearchBtn.addEventListener('click', () => {
+        stlSearchInput.value = '';
+        closeResultsPanel();
+      });
+    }
+
+    document.addEventListener('click', e => {
+      if (!headerResultsPanel.hidden && !stlSearchForm.contains(e.target) && !headerResultsPanel.contains(e.target)) {
+        closeResultsPanel();
       }
     });
   }
@@ -243,6 +260,7 @@
         ${otherLinks}
       </div>`;
     stlResults.hidden = false;
+    headerResultsPanel.hidden = false;
   }
 
   // ===================================================

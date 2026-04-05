@@ -19,25 +19,6 @@
         <span class="logo-icon">🗂️</span>
         <span class="logo-text">3D<strong>Print</strong>Dir</span>
       </div>
-      <div class="sort-controls" role="group" aria-label="Sort order">
-        <span class="sort-label">Sort by</span>
-        <button class="sort-btn active" data-sort="az">A – Z</button>
-        <button class="sort-btn" data-sort="users">Users</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- ===== HERO STATS BAR ===== -->
-  <div class="stats-bar" id="stats-bar">
-    <div class="container stats-inner">
-      <!-- Injected by app.js -->
-    </div>
-  </div>
-
-  <!-- ===== MAIN CONTENT ===== -->
-  <main class="main-content" id="main-content" role="main">
-    <div class="container">
-      <!-- STL Search -->
       <form class="stl-search-form" id="stl-search-form" role="search">
         <div class="stl-search-field">
           <svg class="stl-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -55,14 +36,34 @@
           <button type="submit" class="stl-search-btn">Search STL Sites</button>
         </div>
       </form>
-      <div class="stl-results" id="stl-results" hidden></div>
-
-      <!-- No-results message (hidden by default) -->
-      <div class="no-results" id="no-results" hidden>
-        <span class="no-results-icon">🔍</span>
-        <p>No results found for <strong id="no-results-query"></strong></p>
-        <p class="no-results-hint">Try a different search term or <button class="link-btn" id="clear-search-btn">clear the search</button>.</p>
+      <div class="sort-controls" role="group" aria-label="Sort order">
+        <span class="sort-label">Sort by</span>
+        <button class="sort-btn active" data-sort="az">A – Z</button>
+        <button class="sort-btn" data-sort="users">Users</button>
       </div>
+    </div>
+    <div class="header-results-panel" id="header-results-panel" hidden>
+      <div class="container">
+        <div class="stl-results" id="stl-results" hidden></div>
+        <div class="no-results" id="no-results" hidden>
+          <span class="no-results-icon">🔍</span>
+          <p>No results found for <strong id="no-results-query"></strong></p>
+          <p class="no-results-hint">Try a different search term or <button class="link-btn" id="clear-search-btn">clear the search</button>.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO STATS BAR ===== -->
+  <div class="stats-bar" id="stats-bar">
+    <div class="container stats-inner">
+      <!-- Injected by app.js -->
+    </div>
+  </div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-content" id="main-content" role="main">
+    <div class="container">
       <!-- Category sections injected here by app.js -->
       <div id="categories-root"></div>
     </div>
@@ -73,7 +74,7 @@
     <div class="container footer-inner">
       <p>
         This is a community-curated directory.
-        Data is stored in <code>data/sites.json</code> — open a PR to add a resource!
+        Data is stored in <code>data/sites.json</code> — open a <a href="https://github.com/poxju/3d-print-websites/pulls" target="_blank" rel="noopener noreferrer" class="footer-pr-link">PR</a> to add a resource!
       </p>
       <p class="footer-note">Not affiliated with any listed company or product.</p>
       <p class="footer-note">* User / subscriber counts are approximate estimates and may be out of date.</p>
